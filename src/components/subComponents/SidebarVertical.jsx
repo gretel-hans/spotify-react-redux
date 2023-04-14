@@ -1,11 +1,9 @@
 import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { updateSearch } from '../../redux/actions';
+import { useLocation } from 'react-router-dom';
 
 const SidebarVertical=(props)=>{
-  const dispatch=useDispatch()
-
+  const location=useLocation()
     return(
         <>
         <div className="col-2">
@@ -50,7 +48,8 @@ const SidebarVertical=(props)=>{
                       >
                     </li>
                     <li>
-                      <div className="input-group mt-3">
+{
+  location.pathname==='/' &&(<div className="input-group mt-3">
                         <input
                           type="text"
                           className="form-control mb-2"
@@ -73,13 +72,15 @@ const SidebarVertical=(props)=>{
                             id="button-addon1"
                             onClick={()=>{
                               props.setCont(props.cont+1)
-                              dispatch(updateSearch(props.searched))
                             }}
                           >
                             GO
                           </button>
                         </div>
-                      </div>
+                      </div>)
+}
+                      
+
                     </li>
                   </ul>
                 </div>

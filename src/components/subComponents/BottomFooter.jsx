@@ -1,4 +1,7 @@
+import { useSelector } from "react-redux"
 const BottomFooter=()=>{
+  const selectedSong=useSelector(state=>{return state.song.selectedSong[0]})
+  //console.log(selectedSong)
     return(
         <div className="container-fluid fixed-bottom bg-container pt-1">
         <div className="row-special">
@@ -26,7 +29,9 @@ const BottomFooter=()=>{
                 </div>
               </div>
             </div>
-            <div className="row justify-content-center playBar py-3">
+            <div className="row justify-content-center align-items-baseline playBar py-2">
+            {selectedSong&& (<span className="text-light">
+            {selectedSong.artist.name} - <span>{ selectedSong.title_short } </span>⭐️</span>)}
               <div className="col-8 col-md-6">
                 <div className="progress">
                   <div

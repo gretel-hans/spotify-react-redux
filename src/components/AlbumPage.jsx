@@ -1,11 +1,16 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { headers } from "./HomePage";
 import SidebarVertical from './subComponents/SidebarVertical'
+import { useDispatch } from "react-redux";
+import { addSong } from "../redux/actions";
+import BottomFooter from "../components/subComponents/BottomFooter";
 
 const AlbumPage = () => {
   const params = useParams().id;
   const [albumDetails, setAlbumDetails] = useState(null);
+  const dispatch=useDispatch()
   //console.log(params)
 
   const getAlbumFetch = () => {
@@ -24,7 +29,7 @@ const AlbumPage = () => {
         }
       })
       .then((dato) => {
-        console.log(dato);
+       // console.log(dato);
         setAlbumDetails(dato);
       });
   };
@@ -40,11 +45,11 @@ const AlbumPage = () => {
     <div className="col-12 col-md-9 offset-md-3 mainPage">
       <div className="row mb-3">
         <div className="col-9 col-lg-11 mainLinks d-none d-md-flex">
-          <a href="void(0)">TRENDING</a>
-          <a href="void(0)">PODCAST</a>
-          <a href="void(0)">MOODS AND GENRES</a>
-          <a href="void(0)">NEW RELEASES</a>
-          <a href="void(0)">DISCOVER</a>
+          <a href="#">TRENDING</a>
+          <a href="#">PODCAST</a>
+          <a href="#">MOODS AND GENRES</a>
+          <a href="#">NEW RELEASES</a>
+          <a href="#">DISCOVER</a>
         </div>
       </div>
       <div className="row">
@@ -78,14 +83,15 @@ const AlbumPage = () => {
               {albumDetails &&
                 albumDetails.tracks.data.map((track) => {
                   return (
-                    <div key={track.id} className="py-3 trackHover">
-                      <a
-                        href="void(0)"
+                    <div key={track.id} className="py-3 trackHover" onClick={()=>{
+                        dispatch(addSong(track))
+                        }} >
+                      <span
                         className="card-title trackHover px-3"
                         style={{ color: "white" }}
                       >
                         {track.title}
-                      </a>
+                      </span>
                       <small className="duration" style={{ color: "white" }}>
                         
                         {Math.floor(
@@ -105,6 +111,8 @@ const AlbumPage = () => {
         </div>
       </div>
     </div>
+
+    <BottomFooter/>
     </>
   );
 };

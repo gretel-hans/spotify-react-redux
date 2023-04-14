@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import HomePage from "./components/HomePage";
 import ArtistPage from "./components/ArtistPage";
 import AlbumPage from "./components/AlbumPage";
-import BottomFooter from "./components/subComponents/BottomFooter";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   return (
@@ -18,8 +18,8 @@ function App() {
               <Route path='/' element={<HomePage/>}/>
               <Route path='/albumpage/:id' element={<AlbumPage/>}/>
               <Route path='/artistpage/:id' element={<ArtistPage/>}/>
+              <Route path='*' element={<PageNotFound/>}/>
             </Routes>
-            <BottomFooter/>
           </Row>
         </Container>
         

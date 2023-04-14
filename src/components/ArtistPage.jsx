@@ -1,66 +1,61 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import SidebarVertical from './subComponents/SidebarVertical'
 import { useParams } from 'react-router-dom'
 import { headers } from "./HomePage";
 import { useEffect, useState } from "react";
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import BottomFooter from "../components/subComponents/BottomFooter";
 
 const ArtistPage=()=>{
 
     const[artistAlbum,setArtistAlbum]=useState(null)
     const[artistDetails,setArtistDetails]=useState(null)
-    const artistSearch=useSelector(state=>{return state.artist.artist})
+    //const artistSearch=useSelector(state=>{return state.artist.artist})
+    
     //https://www.deezer.com/artist/
     const params=useParams().id
-    console.log(artistSearch)
+    //console.log(artistSearch)
     //console.log(params)
 
-    const artistFetch=()=>{
-        return fetch(
-            `https://striveschool-api.herokuapp.com/api/deezer/artist/${params}`,
-            {
-              method: "GET",
-              headers,
-            }
-          )
-            .then((response) => {
-              if (response.ok) {
-                return response.json();
-              } else {
-                console.log("ERROR during fetch");
+    const artistFetch=async ()=>{
+
+
+        try {
+            let response = await fetch(
+                `https://striveschool-api.herokuapp.com/api/deezer/artist/${params}`,
+                {
+                  method: "GET",
+                  headers,
+                }
+              );
+              if(response.ok){
+                let artist =await response.json()
+                setArtistAlbum(artist);
+
+                let tracksResponse = await fetch(
+                    // await the fetch of the artist songs
+                    `https://striveschool-api.herokuapp.com/api/deezer/search?q=${artist.name}`,
+                    {
+                      method: "GET",
+                      headers,
+                    }
+                  );
+                  if (tracksResponse.ok) {
+                    let tracklist = await tracksResponse.json();
+                    setArtistDetails(tracklist.data);
+                }
+                  
               }
-            })
-            .then((dato) => {
-              console.log(dato);
-              setArtistAlbum(dato);
-            });
+        } catch (error) {
+            console.log(error)
+        }
     }
 
-    const artistDetailsFetch=()=>{
-        return fetch(
-            `https://striveschool-api.herokuapp.com/api/deezer/search?q=${artistSearch}`,
-            {
-              method: "GET",
-              headers,
-            }
-          )
-            .then((response) => {
-              if (response.ok) {
-                return response.json();
-              } else {
-                console.log("ERROR during fetch");
-              }
-            })
-            .then((dato) => {
-              console.log(dato.data);
-              setArtistDetails(dato.data);
-            });
-    }
 
 
     useEffect(()=>{
         artistFetch()
-        artistDetailsFetch()
+        
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
@@ -72,12 +67,12 @@ const ArtistPage=()=>{
         <SidebarVertical/>
         <div className="col-12 col-md-9 offset-md-3 mainPage">
           <div className="row mb-3">
-            <div className="col-9 col-lg-11 mainLinks d-none d-md-flex">
-              <a href="void(0)">TRENDING</a>
-              <a href="void(0)">PODCAST</a>
-              <a href="void(0)">MOODS AND GENRES</a>
-              <a href="void(0)">NEW RELEASES</a>
-              <a href="void(0)">DISCOVER</a>
+            <div className="col-9 col-lg-11 mainLinks d-none d-md-flex"> 
+              <a href="#">TRENDING</a>
+              <a href="#">PODCAST</a>
+              <a href="#">MOODS AND GENRES</a>
+              <a href="#">NEW RELEASES</a>
+              <a href="#">DISCOVER</a>
             </div>
           </div>
 
@@ -145,6 +140,7 @@ const ArtistPage=()=>{
             </div>
           </div>
         </div>
+        <BottomFooter/>
         </>
        
     )

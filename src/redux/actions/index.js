@@ -1,8 +1,8 @@
-export const UPDATE_SEARCHED='UPDATE_SEARCHED'
+export const SELECT_SONG='SELECT_SONG'
 
-export const updateSearch=(artist)=>{
+export const addSong=(song)=>{
     return{
-        type:UPDATE_SEARCHED,
-        payload:artist
+        type:SELECT_SONG,
+        payload:song
     }
 }

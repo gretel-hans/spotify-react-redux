@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SidebarVertical from "./subComponents/SidebarVertical";
+import BottomFooter from "../components/subComponents/BottomFooter";
 
 export let headers = new Headers({
   // sets the headers
@@ -77,7 +79,7 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    if (artistSearched.length > 2) {
+    if (artistSearched.length >= 2) {
       getArtistSearchedFetch();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -190,11 +192,11 @@ const HomePage = () => {
       <div className="col-12 col-md-9 offset-md-3 mainPage">
         <div className="row">
           <div className="col-9 col-lg-11 mainLinks d-none d-md-flex">
-            <a href="void(0)">TRENDING</a>
-            <a href="void(0)">PODCAST</a>
-            <a href="void(0)">MOODS AND GENRES</a>
-            <a href="void(0)">NEW RELEASES</a>
-            <a href="void(0)">DISCOVER</a>
+            <a href="#">TRENDING</a>
+            <a href="#">PODCAST</a>
+            <a href="#">MOODS AND GENRES</a>
+            <a href="#">NEW RELEASES</a>
+            <a href="#">DISCOVER</a>
           </div>
         </div>
         <div className="row">
@@ -363,6 +365,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      <BottomFooter/>
     </>
   );
 };
