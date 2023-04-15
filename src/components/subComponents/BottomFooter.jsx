@@ -31,7 +31,7 @@ const BottomFooter=()=>{
             </div>
             <div className="row justify-content-center align-items-baseline playBar py-2">
             {selectedSong&& (<span className="text-light">
-            {selectedSong.artist.name} - <span>{ selectedSong.title_short } </span>⭐️</span>)}
+            {selectedSong.artist.name} - <span>{ selectedSong.title_short } </span><i class="bi bi-heart"></i></span>)}
               <div className="col-8 col-md-6">
                 <div className="progress">
                   <div
