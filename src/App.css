@@ -93,6 +93,11 @@ ul {
   margin-bottom: 4%
 }
 
+.braniSalvati{
+  height: 23em;
+  overflow-x: scroll;
+}
+
 /* BOTTOM PLAYER SECTION*/
 
 .bg-container {

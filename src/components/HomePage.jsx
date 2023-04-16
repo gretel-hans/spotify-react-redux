@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import SidebarVertical from "./subComponents/SidebarVertical";
 import BottomFooter from "../components/subComponents/BottomFooter";
+import SingleAlbum from "./subComponents/SingleAlbum";
 
 export let headers = new Headers({
   // sets the headers
@@ -39,15 +39,21 @@ const HomePage = () => {
   ];
 
   let popArtists = [
-    "maroon5",
-    "coldplay",
-    "onerepublic",
-    "jamesblunt",
+    "rihanna",
+    "billieeilish",
+    "blanco",
+    "mahmood",
     "katyperry",
     "arianagrande",
   ];
 
-  let hipHopArtists = ["eminem", "snoopdogg", "lilwayne", "drake", "kanyewest"];
+  let hipHopArtists = [
+    "travisscott", 
+    "postmalone", 
+    "liluzivert", 
+    "drake", 
+    "future"
+  ];
 
   const getArtistSearchedFetch = () => {
     return fetch(
@@ -70,8 +76,6 @@ const HomePage = () => {
         //console.log(albumResult[0]);
 
         setSearchedResults(albumResult[0]);
-
-        
       })
       .catch((error) => {
         console.log("ERROR:", error);
@@ -212,33 +216,13 @@ const HomePage = () => {
                         key={songInfo.id}
                         id={songInfo.id}
                       >
-                        <Link to={`/albumpage/${songInfo.album.id}`}>
-                          <img
-                            className="img-fluid"
-                            src={songInfo.album.cover_medium}
-                            alt="1"
-                          />{" "}
-                        </Link>
-                        <p>
-                          <Link to={`/albumpage/${songInfo.album.id}`}>
-                            Album: "
-                            {songInfo.album.title.length < 16
-                              ? `${songInfo.album.title}`
-                              : `${songInfo.album.title.substring(0, 16)}...`}
-                            "<br />{" "}
-                          </Link>
-                          <Link to={`/artistpage/${songInfo.artist.id}`}>
-                            Artist: {songInfo.artist.name}
-                          </Link>
-                        </p>
+                        <SingleAlbum songInfo={songInfo} />
                       </div>
                     );
                   })}
                 </div>
               </div>
             )}
-
-
           </div>
         </div>
         <div className="row">
@@ -256,25 +240,7 @@ const HomePage = () => {
                       key={songInfo.id}
                       id={songInfo.id}
                     >
-                      <Link to={`/albumpage/${songInfo.album.id}`}>
-                        <img
-                          className="img-fluid"
-                          src={songInfo.album.cover_medium}
-                          alt="1"
-                        />{" "}
-                      </Link>
-                      <p>
-                        <Link to={`/albumpage/${songInfo.album.id}`}>
-                          Album: "
-                          {songInfo.album.title.length < 16
-                            ? `${songInfo.album.title}`
-                            : `${songInfo.album.title.substring(0, 16)}...`}
-                          "<br />{" "}
-                        </Link>
-                        <Link to={`/artistpage/${songInfo.album.id}`}>
-                          Artist: {songInfo.artist.name}
-                        </Link>
-                      </p>
+                      <SingleAlbum songInfo={songInfo} />
                     </div>
                   );
                 })}
@@ -297,25 +263,7 @@ const HomePage = () => {
                       key={songInfo.id}
                       id={songInfo.id}
                     >
-                      <Link to={`/albumpage/${songInfo.album.id}`}>
-                        <img
-                          className="img-fluid"
-                          src={songInfo.album.cover_medium}
-                          alt="1"
-                        />{" "}
-                      </Link>
-                      <p>
-                        <Link to={`/albumpage/${songInfo.album.id}`}>
-                          Album: "
-                          {songInfo.album.title.length < 16
-                            ? `${songInfo.album.title}`
-                            : `${songInfo.album.title.substring(0, 16)}...`}
-                          "<br />{" "}
-                        </Link>
-                        <Link to={`/artistpage/${songInfo.album.id}`}>
-                          Artist: {songInfo.artist.name}
-                        </Link>
-                      </p>
+                      <SingleAlbum songInfo={songInfo} />
                     </div>
                   );
                 })}
@@ -338,25 +286,7 @@ const HomePage = () => {
                       key={songInfo.id}
                       id={songInfo.id}
                     >
-                      <Link to={`/albumpage/${songInfo.album.id}`}>
-                        <img
-                          className="img-fluid"
-                          src={songInfo.album.cover_medium}
-                          alt="1"
-                        />{" "}
-                      </Link>
-                      <p>
-                        <Link to={`/albumpage/${songInfo.album.id}`}>
-                          Album: "
-                          {songInfo.album.title.length < 16
-                            ? `${songInfo.album.title}`
-                            : `${songInfo.album.title.substring(0, 16)}...`}
-                          "<br />{" "}
-                        </Link>
-                        <Link to={`/artistpage/${songInfo.album.id}`}>
-                          Artist: {songInfo.artist.name}
-                        </Link>
-                      </p>
+                      <SingleAlbum songInfo={songInfo} />
                     </div>
                   );
                 })}
@@ -365,7 +295,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <BottomFooter/>
+      <BottomFooter />
     </>
   );
 };

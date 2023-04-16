@@ -1,6 +1,18 @@
-import { useSelector } from "react-redux"
+import { useState,useEffect } from "react"
+import { useSelector,useDispatch } from "react-redux"
+import {  addFavouriteSong, removeFavouriteSong } from "../../redux/actions"
+
+
 const BottomFooter=()=>{
   const selectedSong=useSelector(state=>{return state.song.selectedSong[0]})
+  const [selectedfavourite,setSelectedFavourite]=useState(false)
+  const heart='bi bi-heart'
+  //const heart_fill='bi bi-heart-fill'
+  const dispatch=useDispatch()
+
+  useEffect(()=>{
+    setSelectedFavourite(false)
+  },[selectedSong])
   //console.log(selectedSong)
     return(
         <div className="container-fluid fixed-bottom bg-container pt-1">
@@ -31,7 +43,17 @@ const BottomFooter=()=>{
             </div>
             <div className="row justify-content-center align-items-baseline playBar py-2">
             {selectedSong&& (<span className="text-light">
-            {selectedSong.artist.name} - <span>{ selectedSong.title_short } </span><i class="bi bi-heart"></i></span>)}
+            {selectedSong.artist.name} - <span>{ selectedSong.title_short } </span><i className={heart} onClick={()=>{ 
+              
+              setSelectedFavourite(!selectedfavourite)
+              if(selectedfavourite===false){
+                console.log('AGGIUNTO AI PREFE')
+                dispatch( addFavouriteSong(selectedSong.title_short))
+              }else{
+                console.log('RIMOSSO DAI PREFE')
+                dispatch( removeFavouriteSong(selectedSong.title_short) )
+              }
+            }}></i></span>)}
               <div className="col-8 col-md-6">
                 <div className="progress">
                   <div
