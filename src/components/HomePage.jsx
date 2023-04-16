@@ -24,7 +24,7 @@ const HomePage = () => {
   let popAlbum = [];
   let hipHopAlbum = [];
 
-  let rockArtists = [ "queen", "thepolice", "eagles", "thedoors", "oasis", "thewho" ];
+  let rockArtists = [ "queen", "thepolice", "elvispresley", "thedoors", "oasis", "thewho" ];
 
   let popArtists = [ "rihanna", "billieeilish", "blanco", "mahmood", "katyperry", "arianagrande" ];
 

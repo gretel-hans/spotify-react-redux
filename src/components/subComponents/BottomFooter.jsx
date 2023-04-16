@@ -18,7 +18,7 @@ const BottomFooter=()=>{
     //console.log(favouriteSongList)
     //console.log(selectedSong)
     if(favouriteSongList.length>=1&&(favouriteSongList.includes(selectedSong.title_short))){
-      console.log('lo include già')
+      
       setSelectedFavourite(true)
     }else{
       setSelectedFavourite(false)
@@ -58,10 +58,10 @@ const BottomFooter=()=>{
             {selectedSong.artist.name} - <span>{ selectedSong.title_short } </span><i className={selectedfavourite?heart_fill:heart} onClick={()=>{
               setSelectedFavourite(!selectedfavourite)
               if(selectedfavourite===false){
-                console.log('AGGIUNTO AI PREFE')
+               // console.log('AGGIUNTO AI PREFERITI')
                 dispatch( addFavouriteSong(selectedSong.title_short))
               }else{
-                console.log('RIMOSSO DAI PREFE')
+               // console.log('RIMOSSO DAI PREFERITI')
                 dispatch( removeFavouriteSong(selectedSong.title_short) )
               }
             }}></i></span>)}

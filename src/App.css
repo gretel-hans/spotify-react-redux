@@ -256,21 +256,24 @@ ul {
     margin-left: calc(-.5 * var(--bs-gutter-x));
 }
 
-.previous{
+
+#homeBack{
   position: fixed;
-  font-size: 2.5em;
-  top: 5px;
-  left: 20px;
+    top: 12px;
+}
+
+a#homeBack{
+  text-decoration: none!important;
 }
 
 @media screen and (min-width: 769px) {
-  .previous {
+  #homeBack {
     left: 45px;
   }
 }
 
 @media screen and (min-width: 937px) {
-  .previous {
+  #homeBack {
     display: none;
   }
 }

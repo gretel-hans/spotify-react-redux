@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { headers } from "./HomePage";
 import SidebarVertical from './subComponents/SidebarVertical'
@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { addSong } from "../redux/actions";
 import BottomFooter from "../components/subComponents/BottomFooter";
 import TopNavbar from "./subComponents/TopNavbar";
+import SingleTrack from "./subComponents/SingleTrack";
 
 const AlbumPage = () => {
   const params = useParams().id;
@@ -45,7 +46,7 @@ const AlbumPage = () => {
     <SidebarVertical/>
     <div className="col-12 col-md-9 offset-md-3 mainPage">
       <TopNavbar/>
-      <span><i class="bi bi-arrow-left-circle previous"></i></span>
+      <Link to='/' id="homeBack">Go back Home </Link>
       <div className="row">
         <div className="col-md-3 pt-5 text-center" id="img-container">
           {albumDetails && (
@@ -80,22 +81,7 @@ const AlbumPage = () => {
                     <div key={track.id} className="py-3 trackHover" onClick={()=>{
                         dispatch(addSong(track))
                         }} >
-                      <span
-                        className="card-title trackHover px-3"
-                        style={{ color: "white" }}
-                      >
-                        {track.title}
-                      </span>
-                      <small className="duration" style={{ color: "white" }}>
-                        
-                        {Math.floor(
-                          parseInt(track.duration) / 60 // setting the duration minutes
-                        )}
-                        :
-                        {parseInt(track.duration) % 60 < 10
-                          ? "0" + (parseInt(track.duration) % 60) // checking che duration seconds, if they are less than 10 a 0 is prefixed
-                          : parseInt(track.duration) % 60}
-                      </small>
+                      <SingleTrack track={track}/>
                     </div>
                   );
                 })}

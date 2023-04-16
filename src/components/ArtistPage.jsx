@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import SidebarVertical from "./subComponents/SidebarVertical";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import { headers } from "./HomePage";
 import { useEffect, useState } from "react";
 import BottomFooter from "../components/subComponents/BottomFooter";
@@ -59,6 +59,7 @@ const ArtistPage = () => {
       <SidebarVertical />
       <div className="col-12 col-md-9 offset-md-3 mainPage">
         <TopNavbar />
+        <Link to='/' id="homeBack">Go back Home </Link>
 
         <div className="row">
           <div className="col-12 col-md-10 col-lg-10 mt-5">

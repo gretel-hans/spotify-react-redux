@@ -2,13 +2,13 @@
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { removeFavouriteSong } from "../../redux/actions";
 
 const SidebarVertical = (props) => {
   const location = useLocation();
-  const likedSongs=useSelector(state=>state.favourite.songList)
-  const dispatch=useDispatch()
+  const likedSongs = useSelector((state) => state.favourite.songList);
+  const dispatch = useDispatch();
   return (
     <>
       <div className="col-2">
@@ -50,7 +50,7 @@ const SidebarVertical = (props) => {
                       <i className="fas fa-book-open fa-lg"></i>&nbsp; Your
                       Library
                     </a>
-                    <hr className=" border text-light m-2"/>
+                    <hr className=" border text-light m-2" />
                   </li>
                   <li>
                     {location.pathname === "/" && (
@@ -90,21 +90,28 @@ const SidebarVertical = (props) => {
                       Brani che ti piacciono
                     </a>
                   </li>
-                            <div className="braniSalvati">
-                              { likedSongs&&(
-                    likedSongs.map((song,i)=>{
-                      return( 
-                        <li key={i}>
-                    <div className="nav-item nav-link text-light" >
-                      {song}&nbsp;<i className='bi bi-heart-fill' onClick={()=>{dispatch(removeFavouriteSong(song))}}></i>
-                    </div>
-                  </li>
-                      )
-                    })
-                  ) }
-                            </div>
-                  
+                  <div className="braniSalvati">
+                    {likedSongs &&
+                      likedSongs.map((song, i) => {
+                        return (
+                          <li key={i}>
+                            <div className="nav-item nav-link text-light p-1">
+                              {song}&nbsp;
 
+                              {location.pathname==='/'?(<i
+                                className="bi bi-heart-fill"
+                                onClick={() => {
+                                  dispatch(removeFavouriteSong(song));
+                                }}
+                              ></i>):(<span className="d-none"></span>) }
+                              
+
+
+                            </div>
+                          </li>
+                        );
+                      })}
+                  </div>
                 </ul>
               </div>
             </div>
