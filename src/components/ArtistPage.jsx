@@ -5,6 +5,7 @@ import { headers } from "./HomePage";
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import BottomFooter from "../components/subComponents/BottomFooter";
+import TopNavbar from "./subComponents/TopNavbar";
 
 const ArtistPage=()=>{
 
@@ -66,15 +67,7 @@ const ArtistPage=()=>{
         <>
         <SidebarVertical/>
         <div className="col-12 col-md-9 offset-md-3 mainPage">
-          <div className="row mb-3">
-            <div className="col-9 col-lg-11 mainLinks d-none d-md-flex"> 
-              <a href="#">TRENDING</a>
-              <a href="#">PODCAST</a>
-              <a href="#">MOODS AND GENRES</a>
-              <a href="#">NEW RELEASES</a>
-              <a href="#">DISCOVER</a>
-            </div>
-          </div>
+          <TopNavbar/>
 
           <div className="row">
             <div className="col-12 col-md-10 col-lg-10 mt-5">

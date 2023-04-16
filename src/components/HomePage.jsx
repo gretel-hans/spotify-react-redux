@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import SidebarVertical from "./subComponents/SidebarVertical";
 import BottomFooter from "../components/subComponents/BottomFooter";
 import SingleAlbum from "./subComponents/SingleAlbum";
+import TopNavbar from "./subComponents/TopNavbar";
 
 export let headers = new Headers({
   // sets the headers
@@ -20,40 +21,15 @@ const HomePage = () => {
 
   let albumResult = [];
 
-  //const[rockAlbum,setRockAlbum]=useState([])
-  //const[popAlbum,setPopAlbum]=useState([])
-  //const[hipHopAlbum,setHipHopAlbum]=useState([])
   let rockAlbum = [];
   let popAlbum = [];
   let hipHopAlbum = [];
 
-  let rockArtists = [
-    "queen",
-    "u2",
-    "thepolice",
-    "eagles",
-    "thedoors",
-    "oasis",
-    "thewho",
-    "bonjovi",
-  ];
+  let rockArtists = [ "queen", "thepolice", "eagles", "thedoors", "oasis", "thewho" ];
 
-  let popArtists = [
-    "rihanna",
-    "billieeilish",
-    "blanco",
-    "mahmood",
-    "katyperry",
-    "arianagrande",
-  ];
+  let popArtists = [ "rihanna", "billieeilish", "blanco", "mahmood", "katyperry", "arianagrande" ];
 
-  let hipHopArtists = [
-    "travisscott", 
-    "postmalone", 
-    "liluzivert", 
-    "drake", 
-    "future"
-  ];
+  let hipHopArtists = [ "travisscott", "postmalone", "liluzivert", "drake", "future" ];
 
   const getArtistSearchedFetch = () => {
     return fetch(
@@ -128,16 +104,10 @@ const HomePage = () => {
       });
   };
 
-  //console.log(rockAlbum)
-  //console.log(popAlbum)
-  //console.log(hipHopAlbum)
-
   const fillRandomArray = async () => {
     let rockRandomArtists = [];
     let popRandomArtists = [];
     let hipHopRandomArtists = [];
-
-     // empties search field on page load
 
     while (rockRandomArtists.length < 4) {
       // pushes elements inside the array until it has 4 strings
@@ -195,13 +165,7 @@ const HomePage = () => {
 
       <div className="col-12 col-md-9 offset-md-3 mainPage">
         <div className="row">
-          <div className="col-9 col-lg-11 mainLinks d-none d-md-flex">
-            <a href="#">TRENDING</a>
-            <a href="#">PODCAST</a>
-            <a href="#">MOODS AND GENRES</a>
-            <a href="#">NEW RELEASES</a>
-            <a href="#">DISCOVER</a>
-          </div>
+          <TopNavbar />
         </div>
         <div className="row">
           <div className="col-10">

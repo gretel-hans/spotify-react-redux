@@ -6,13 +6,24 @@ import {  addFavouriteSong, removeFavouriteSong } from "../../redux/actions"
 
 const BottomFooter=()=>{
   const selectedSong=useSelector(state=>{return state.song.selectedSong[0]})
+  const favouriteSongList=useSelector(state=>{return state.favourite.songList})
   const [selectedfavourite,setSelectedFavourite]=useState(false)
-  const heart='bi bi-heart'
-  //const heart_fill='bi bi-heart-fill'
   const dispatch=useDispatch()
 
+  const heart='bi bi-heart'
+  const heart_fill='bi bi-heart-fill'
+  
+
   useEffect(()=>{
-    setSelectedFavourite(false)
+    //console.log(favouriteSongList)
+    //console.log(selectedSong)
+    if(favouriteSongList.length>=1&&(favouriteSongList.includes(selectedSong.title_short))){
+      console.log('lo include già')
+      setSelectedFavourite(true)
+    }else{
+      setSelectedFavourite(false)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[selectedSong])
   //console.log(selectedSong)
     return(
@@ -44,8 +55,7 @@ const BottomFooter=()=>{
             </div>
             <div className="row justify-content-center align-items-baseline playBar py-2">
             {selectedSong&& (<span className="text-light">
-            {selectedSong.artist.name} - <span>{ selectedSong.title_short } </span><i className={heart} onClick={()=>{ 
-              
+            {selectedSong.artist.name} - <span>{ selectedSong.title_short } </span><i className={selectedfavourite?heart_fill:heart} onClick={()=>{
               setSelectedFavourite(!selectedfavourite)
               if(selectedfavourite===false){
                 console.log('AGGIUNTO AI PREFE')

@@ -6,6 +6,7 @@ import SidebarVertical from './subComponents/SidebarVertical'
 import { useDispatch } from "react-redux";
 import { addSong } from "../redux/actions";
 import BottomFooter from "../components/subComponents/BottomFooter";
+import TopNavbar from "./subComponents/TopNavbar";
 
 const AlbumPage = () => {
   const params = useParams().id;
@@ -43,15 +44,7 @@ const AlbumPage = () => {
     <>
     <SidebarVertical/>
     <div className="col-12 col-md-9 offset-md-3 mainPage">
-      <div className="row mb-3">
-        <div className="col-9 col-lg-11 mainLinks d-none d-md-flex">
-          <a href="#">TRENDING</a>
-          <a href="#">PODCAST</a>
-          <a href="#">MOODS AND GENRES</a>
-          <a href="#">NEW RELEASES</a>
-          <a href="#">DISCOVER</a>
-        </div>
-      </div>
+      <TopNavbar/>
       <div className="row">
         <div className="col-md-3 pt-5 text-center" id="img-container">
           {albumDetails && (
