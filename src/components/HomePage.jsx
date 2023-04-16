@@ -4,7 +4,6 @@ import SidebarVertical from "./subComponents/SidebarVertical";
 import BottomFooter from "../components/subComponents/BottomFooter";
 import SingleAlbum from "./subComponents/SingleAlbum";
 import TopNavbar from "./subComponents/TopNavbar";
-
 export let headers = new Headers({
   // sets the headers
   "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
@@ -52,6 +51,7 @@ const HomePage = () => {
         //console.log(albumResult[0]);
 
         setSearchedResults(albumResult[0]);
+        
       })
       .catch((error) => {
         console.log("ERROR:", error);

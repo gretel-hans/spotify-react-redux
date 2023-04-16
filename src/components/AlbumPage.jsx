@@ -45,6 +45,7 @@ const AlbumPage = () => {
     <SidebarVertical/>
     <div className="col-12 col-md-9 offset-md-3 mainPage">
       <TopNavbar/>
+      <span><i class="bi bi-arrow-left-circle previous"></i></span>
       <div className="row">
         <div className="col-md-3 pt-5 text-center" id="img-container">
           {albumDetails && (
