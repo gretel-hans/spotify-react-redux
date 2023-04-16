@@ -137,7 +137,7 @@ const HomePage = () => {
     let popRandomArtists = [];
     let hipHopRandomArtists = [];
 
-    document.querySelector("#searchField").value = ""; // empties search field on page load
+     // empties search field on page load
 
     while (rockRandomArtists.length < 4) {
       // pushes elements inside the array until it has 4 strings

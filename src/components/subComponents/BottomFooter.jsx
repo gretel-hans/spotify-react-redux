@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState,useEffect } from "react"
 import { useSelector,useDispatch } from "react-redux"
 import {  addFavouriteSong, removeFavouriteSong } from "../../redux/actions"
@@ -23,19 +24,19 @@ const BottomFooter=()=>{
                 className="col-6 col-md-4 col-lg-2 offset-3 offset-md-4 offset-lg-5 playerControls mt-1"
               >
                 <div className="row">
-                  <a href="void(0)">
+                  <a href="#">
                     <img src="/media/playerbuttons/Shuffle.png" alt="shuffle" />
                   </a>
-                  <a href="void(0)">
+                  <a href="#">
                     <img src="/media/playerbuttons/Previous.png" alt="shuffle" />
                   </a>
-                  <a href="void(0)">
+                  <a href="#">
                     <img src="/media/playerbuttons/Play.png" alt="shuffle" />
                   </a>
-                  <a href="void(0)">
+                  <a href="#">
                     <img src="/media/playerbuttons/Next.png" alt="shuffle" />
                   </a>
-                  <a href="void(0)">
+                  <a href="#">
                     <img src="/media/playerbuttons/Repeat.png" alt="shuffle" />
                   </a>
                 </div>
